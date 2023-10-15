@@ -1,5 +1,6 @@
 package com.chefgo.data
 
+import com.chefgo.data.model.ApiConstants
 import com.chefgo.domain.RecipeResponse
 import retrofit2.Call
 import retrofit2.http.*

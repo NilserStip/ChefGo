@@ -1,4 +1,4 @@
-package com.chefgo.ui
+package com.chefgo.ui.recipe
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,9 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import com.chefgo.R
 import com.chefgo.base.BaseFragment
 import com.chefgo.databinding.FragmentRecipeBinding
+import com.chefgo.ui.main.AppConstants
 import com.chefgo.ui.model.Recipe
+import com.google.gson.Gson
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
@@ -76,6 +80,9 @@ class RecipeFragment : BaseFragment(), RecipeAdapter.OnClickListener, RecipeView
     }
 
     override fun onClick(item: Recipe) {
+        val bundle = Bundle()
+        bundle.putString(AppConstants.ARG_ITEM_RECIPE, Gson().toJson(item))
+        findNavController().navigate(R.id.action_RecipeFragment_to_DetailFragment, bundle)
     }
 
     override fun showLoading() {

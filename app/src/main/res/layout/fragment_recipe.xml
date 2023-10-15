@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/whiteSmoke"
-    tools:context=".ui.RecipeFragment">
+    tools:context=".ui.recipe.RecipeFragment">
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tilSearch"
@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/_8sdp"
-        android:hint="@string/fragment_list_search"
+        android:hint="@string/fragment_recipe_search"
         app:endIconMode="clear_text"
         app:hintTextColor="@color/lightGray"
         app:layout_constraintBottom_toTopOf="@+id/srlContent"

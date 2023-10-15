@@ -1,4 +1,4 @@
-package com.chefgo.ui
+package com.chefgo.ui.recipe
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -33,26 +33,12 @@ class RecipeAdapter(private val listener: OnClickListener) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-//        if (position == 0 || position == data.size - 1) {
-//            val params = LinearLayout.LayoutParams(
-//                LinearLayout.LayoutParams.WRAP_CONTENT,
-//                LinearLayout.LayoutParams.WRAP_CONTENT
-//            )
-//            if (position == 0) params.setMargins(
-//                getPX(context, 10),
-//                getPX(context, 4),
-//                getPX(context, 4),
-//                getPX(context, 8)
-//            ) else params.setMargins(0, getPX(context, 4), getPX(context, 10), getPX(context, 8))
-//            holder.itemView.layoutParams = params
-//        }
-
         val recipe = data[position]
 
         holder.binding.apply {
             Glide.with(context).load(recipe.logo.trim { it <= ' ' }).centerCrop()
                 .placeholder(R.drawable.loading).into(imageRecipe)
-            textViewName.text = recipe.name
+            textViewName.text = capitalize(recipe.name)
 
             root.setOnClickListener {
                 listener.onClick(recipe)

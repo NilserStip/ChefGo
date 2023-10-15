@@ -1,4 +1,4 @@
-package com.chefgo.ui
+package com.chefgo.ui.recipe
 
 import com.chefgo.base.BaseView
 import com.chefgo.ui.model.Recipe

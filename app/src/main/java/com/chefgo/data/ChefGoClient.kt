@@ -4,6 +4,7 @@ import android.os.Handler
 import android.os.Looper
 import com.chefgo.BuildConfig
 import com.chefgo.base.BaseView
+import com.chefgo.data.model.ApiConstants
 import com.facebook.stetho.okhttp3.StethoInterceptor
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -84,9 +85,9 @@ class ChefGoClient {
                     "validateResponseCode",
                     Throwable(response.message)
                 )
-//                baseView!!.hideLoading()
                 when (response.code) {
                     401 -> {
+//                        baseView!!.hideLoading()
 //                        baseView!!.logoutApp()
                     }
                     else -> baseView!!.showViewMessage()

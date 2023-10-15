@@ -1,4 +1,4 @@
-package com.chefgo.ui
+package com.chefgo.ui.main
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

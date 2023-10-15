@@ -2,12 +2,19 @@
 <resources>
     <string name="app_name">&appname;</string>
 
-    <!-- Fragment List -->
-    <string name="fragment_list_search">Buscar Receta</string>
-    <string name="fragment_list_map">Ver Mapa</string>
+    <!-- General -->
+    <string name="error_service">Ocurrió un error inesperado</string>
+    <string name="provider">com.chefgo.fileprovider</string>
+
+    <!-- Fragment Recipe -->
+    <string name="fragment_recipe_search">Buscar Receta</string>
+    <string name="fragment_recipe_map">Ver Mapa</string>
 
     <!-- Fragment Detail -->
     <string name="fragment_detail">Second Fragment</string>
+
+    <!-- Fragment Maps -->
+    <string name="fragment_maps_marker">Origen de receta</string>
 
     <!-- View List Empty -->
     <string name="view_list_empty_title">Lista vacía</string>

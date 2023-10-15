@@ -1,4 +1,4 @@
-package com.chefgo.ui
+package com.chefgo.ui.recipe
 
 import com.chefgo.base.BasePresenter
 import com.chefgo.data.ChefGoClient
@@ -53,7 +53,7 @@ class RecipePresenter : BasePresenter<RecipeView>() {
         if (data.isEmpty()) return array
 
         data.forEach {
-            array.add(Recipe(it.id, it.logo, it.name, it.description))
+            array.add(Recipe(it.id, it.logo, it.name, it.description, it.location))
         }
         return array
     }

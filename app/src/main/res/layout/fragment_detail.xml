@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.SecondFragment">
+    tools:context=".ui.recipe.detail.DetailFragment">
 
     <ScrollView
         android:id="@+id/scrollView_content"
@@ -50,7 +50,7 @@
                         android:layout_height="wrap_content">
 
                         <androidx.appcompat.widget.AppCompatImageView
-                            android:id="@+id/ivPlatform"
+                            android:id="@+id/image_recipe"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             app:layout_constraintBottom_toBottomOf="parent"
@@ -96,8 +96,10 @@
         android:id="@+id/button_map"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:backgroundTint="@color/whiteSmoke"
         android:layout_margin="@dimen/_12sdp"
-        android:text="@string/fragment_list_map"
+        android:text="@string/fragment_recipe_map"
+        android:textColor="@android:color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -7,13 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
-import android.widget.LinearLayout
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.chefgo.util.MiddleDividerItemDecoration
+import com.chefgo.App
+import com.chefgo.R
 import io.paperdb.Paper
 import java.util.*
 
@@ -43,7 +43,7 @@ open class BaseActivity : AppCompatActivity(), BaseView {
     }
 
     override fun showViewMessage(message: String?) {
-
+        Toast.makeText(this, message ?: getString(R.string.error_service), Toast.LENGTH_LONG).show()
     }
 
     open fun loadRecycler(
@@ -96,8 +96,8 @@ open class BaseActivity : AppCompatActivity(), BaseView {
     }
 
     override fun onFailure(className: String, methodName: String, t: Throwable) {
-//        App.mFirebaseCrashlytics.log("$className: $methodName: ${t.message}")
-//        App.mFirebaseCrashlytics.recordException(t)
+        App.mFirebaseCrashlytics.log("$className: $methodName: ${t.message}")
+        App.mFirebaseCrashlytics.recordException(t)
     }
 
     fun capitalize(text: String): String {
@@ -129,16 +129,6 @@ open class BaseActivity : AppCompatActivity(), BaseView {
             view = View(this)
         }
         imm.showSoftInput(view, 0)
-    }
-
-    protected fun showLoading(view: View, llLoad: LinearLayout) {
-        enabledView(view, false)
-        llLoad.visibility = View.VISIBLE
-    }
-
-    protected fun hideLoading(view: View, llLoad: LinearLayout) {
-        enabledView(view, true)
-        llLoad.visibility = View.GONE
     }
 
     private fun enabledView(view: View, enabled: Boolean) {

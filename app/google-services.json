@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "424221108424",
+    "project_id": "chefgo-com",
+    "storage_bucket": "chefgo-com.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:424221108424:android:418b4d7bed51c3422cddfd",
+        "android_client_info": {
+          "package_name": "com.chefgo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBuvucc2dxc0YAHeu7O2tDtUgUEjGj2lTE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:424221108424:android:3f211084f47b3cc82cddfd",
+        "android_client_info": {
+          "package_name": "dev.com.chefgo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBuvucc2dxc0YAHeu7O2tDtUgUEjGj2lTE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
