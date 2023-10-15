@@ -1,3 +1,16 @@
+<!DOCTYPE resources [<!ENTITY appname "ChefGo">]>
 <resources>
-    <string name="app_name">ChefGo</string>
+    <string name="app_name">&appname;</string>
+
+    <!-- Fragment List -->
+    <string name="fragment_list_search">Buscar Receta</string>
+    <string name="fragment_list_map">Ver Mapa</string>
+
+    <!-- Fragment Detail -->
+    <string name="fragment_detail">Second Fragment</string>
+
+    <!-- View List Empty -->
+    <string name="view_list_empty_title">Lista vacía</string>
+    <string name="view_list_empty_description">Intente nuevamente</string>
+
 </resources>

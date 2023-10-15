@@ -1,4 +1,4 @@
-package com.example.chefgo
+package com.chefgo
 
 import org.junit.Test
 
