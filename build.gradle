@@ -1,11 +1,21 @@
 buildscript {
     ext {
+
+        // Gradle
+        gradle_version = '7.4.2'
+
         // Kotlin
-        kotlinVersion = '1.7.21'
+        kotlin_version = '1.7.21'
 
         // Google
-        googleServicesVersion = '4.3.15'
-        CrashlyticsVersion = '2.9.5'
+        google_services_version = '4.3.15'
+        crashlytics_version = '2.9.5'
+
+        // Dagger Hilt
+        hilt_version = '2.44'
+
+        // Maps
+        maps_version = '2.0.1'
     }
 
     repositories {
@@ -14,13 +24,14 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.4.2'
-        classpath "com.google.gms:google-services:$googleServicesVersion"
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
-        classpath "org.jetbrains.kotlin:kotlin-android-extensions:$kotlinVersion"
-        classpath "org.jetbrains.kotlin:kotlin-serialization:$kotlinVersion"
-        classpath "com.google.firebase:firebase-crashlytics-gradle:$CrashlyticsVersion"
-        classpath 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin:secrets-gradle-plugin:2.0.1'
+        classpath "com.android.tools.build:gradle:$gradle_version"
+        classpath "com.google.gms:google-services:$google_services_version"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "org.jetbrains.kotlin:kotlin-android-extensions:$kotlin_version"
+        classpath "org.jetbrains.kotlin:kotlin-serialization:$kotlin_version"
+        classpath "com.google.firebase:firebase-crashlytics-gradle:$crashlytics_version"
+        classpath "com.google.dagger:hilt-android-gradle-plugin:$hilt_version"
+        classpath "com.google.android.libraries.mapsplatform.secrets-gradle-plugin:secrets-gradle-plugin:$maps_version"
     }
 }
 
