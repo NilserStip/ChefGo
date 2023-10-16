@@ -1,0 +1,4 @@
+<!DOCTYPE resources [<!ENTITY appname "ChefGo UAT">]>
+<resources>
+    <string name="app_name">&appname;</string>
+</resources>

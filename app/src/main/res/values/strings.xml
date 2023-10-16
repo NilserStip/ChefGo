@@ -18,6 +18,6 @@
 
     <!-- View List Empty -->
     <string name="view_list_empty_title">Lista vacía</string>
-    <string name="view_list_empty_description">Intente nuevamente</string>
+    <string name="view_list_empty_description">Intente nuevamente deslizando la pantalla desde la parte superior hacia abajo</string>
 
 </resources>

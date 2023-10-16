@@ -26,9 +26,9 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:424221108424:android:3f211084f47b3cc82cddfd",
+        "mobilesdk_app_id": "1:424221108424:android:5a42d4db9d08d96e2cddfd",
         "android_client_info": {
-          "package_name": "dev.com.chefgo"
+          "package_name": "com.chefgo.dev"
         }
       },
       "oauth_client": [],

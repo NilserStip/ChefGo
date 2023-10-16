@@ -5,9 +5,11 @@ import com.facebook.stetho.Stetho
 import com.google.firebase.FirebaseApp
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.crashlytics.FirebaseCrashlytics
-import io.paperdb.Paper
 
 class App : MultiDexApplication() {
+
+    // Instance of AppContainer that will be used by all the Activities of the app
+    val appContainer = AppContainer()
 
     companion object {
         lateinit var mFirebaseAnalytics: FirebaseAnalytics
@@ -20,13 +22,8 @@ class App : MultiDexApplication() {
     }
 
     private fun initLibraries() {
-        configPaper()
         configFirebase()
         configStetho()
-    }
-
-    private fun configPaper() {
-        Paper.init(this)
     }
 
     private fun configFirebase() {

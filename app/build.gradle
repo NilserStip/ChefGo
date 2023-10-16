@@ -18,8 +18,9 @@ android {
         applicationId "com.chefgo"
         minSdk 23
         targetSdk 33
+        
         versionCode 1
-        versionName "1.0"
+        versionName "1.0.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -32,18 +33,23 @@ android {
         release {
             minifyEnabled false
             shrinkResources false
-            // signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
 
-    flavorDimensions "default"
+    flavorDimensions "environment"
     productFlavors {
         dev {
-            applicationId "dev.com.chefgo"
-            versionCode 1
-            versionName "1.0.0.0"
-
+            applicationIdSuffix ".dev"
+            versionNameSuffix "-dev"
+            buildConfigField "String", "BASE_URL", '"https://apimocha.com/pagalow/"'
+        }
+        uat {
+            applicationIdSuffix ".uat"
+            versionNameSuffix "-uat"
+            buildConfigField "String", "BASE_URL", '"https://apimocha.com/pagalow/"'
+        }
+        prd {
             buildConfigField "String", "BASE_URL", '"https://apimocha.com/pagalow/"'
         }
     }
@@ -57,11 +63,6 @@ android {
     buildFeatures {
         viewBinding true
     }
-    packagingOptions {
-        resources {
-            excludes += ['/META-INF/{AL2.0,LGPL2.1}', 'META-INF/gradle/incremental.annotation.processors']
-        }
-    }
     lint {
         abortOnError false
     }
@@ -73,9 +74,10 @@ dependencies {
     implementation 'androidx.core:core-ktx:1.10.1'
     implementation 'androidx.multidex:multidex:2.0.1'
     implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'com.google.guava:guava:31.1-jre'
     implementation 'androidx.navigation:navigation-fragment-ktx:2.6.0'
     implementation 'androidx.navigation:navigation-ui-ktx:2.6.0'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1'
 
     // UI
     implementation 'com.google.android.material:material:1.10.0'
@@ -84,7 +86,7 @@ dependencies {
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
     implementation 'com.github.bumptech.glide:glide:4.11.0'
     implementation 'com.google.android.gms:play-services-maps:18.1.0'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+    kapt 'com.github.bumptech.glide:compiler:4.11.0'
 
     // DIMENS
     implementation 'com.intuit.sdp:sdp-android:1.1.0'
@@ -98,16 +100,20 @@ dependencies {
     implementation 'com.facebook.stetho:stetho:1.6.0'
     implementation 'com.facebook.stetho:stetho-okhttp3:1.6.0'
 
-    // DATA
-    implementation 'io.paperdb:paperdb:2.7.1'
-
     // FIREBASE SERVICES
     implementation platform('com.google.firebase:firebase-bom:32.3.1')
     implementation 'com.google.firebase:firebase-analytics-ktx'
     implementation 'com.google.firebase:firebase-crashlytics-ktx'
 
     // UNIT TEST
+    testImplementation 'org.mockito:mockito-core:2.12.0'
+    testImplementation 'org.mockito:mockito-inline:3.7.0'
+    testImplementation 'androidx.arch.core:core-testing:2.2.0'
+    testImplementation "org.jetbrains. kotlinx:kotlinx-coroutines-test:1.0"
+    androidTestImplementation 'org.mockito:mockito-android:2.12.0'
+
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    //TODO: AGREGAR MOCKITO
 }
