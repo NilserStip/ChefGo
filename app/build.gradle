@@ -43,12 +43,12 @@ android {
         dev {
             applicationIdSuffix ".dev"
             versionNameSuffix "-dev"
-            buildConfigField "String", "BASE_URL", '"https://apimocha.com/pagalow/"'
+            buildConfigField "String", "BASE_URL", '"https://apimocha.com/chefgo_dev/"'
         }
         uat {
             applicationIdSuffix ".uat"
             versionNameSuffix "-uat"
-            buildConfigField "String", "BASE_URL", '"https://apimocha.com/pagalow/"'
+            buildConfigField "String", "BASE_URL", '"https://apimocha.com/chefgo_uat/"'
         }
         prd {
             buildConfigField "String", "BASE_URL", '"https://apimocha.com/pagalow/"'
@@ -110,7 +110,9 @@ dependencies {
     testImplementation 'org.mockito:mockito-core:3.7.0'
     testImplementation 'org.mockito:mockito-inline:3.7.0'
     testImplementation 'androidx.arch.core:core-testing:2.2.0'
-    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.1")
+//    testImplementation 'io.mockk.mockk:1.12.2'
+//    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.1")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4")
     androidTestImplementation 'org.mockito:mockito-android:2.12.0'
 
     // DAGGER HILT

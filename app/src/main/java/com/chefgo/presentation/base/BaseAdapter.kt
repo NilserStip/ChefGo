@@ -6,7 +6,7 @@ import android.util.TypedValue
 import androidx.recyclerview.widget.RecyclerView
 import java.util.*
 
-abstract class BaseAdapter <T : RecyclerView.ViewHolder?> : RecyclerView.Adapter<T>() {
+abstract class BaseAdapter<T : RecyclerView.ViewHolder?> : RecyclerView.Adapter<T>() {
 
     fun getPX(context: Context, number: Int): Int {
         val r: Resources = context.resources

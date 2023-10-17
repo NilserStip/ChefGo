@@ -10,11 +10,15 @@ import com.chefgo.R
 import com.chefgo.domain.model.Recipe
 import com.chefgo.presentation.base.BaseAdapter
 import com.chefgo.databinding.ItemRecipeBinding
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class RecipeAdapter(private val listener: OnClickListener) :
+@Singleton
+class RecipeAdapter @Inject constructor() :
     BaseAdapter<RecipeAdapter.ViewHolder>() {
 
     private lateinit var context: Context
+    private var listener: OnClickListener? = null
     private var data = ArrayList<Recipe>()
 
     class ViewHolder(val binding: ItemRecipeBinding) :
@@ -41,9 +45,13 @@ class RecipeAdapter(private val listener: OnClickListener) :
             textViewName.text = capitalize(recipe.name)
 
             root.setOnClickListener {
-                listener.onClick(recipe)
+                listener?.onClick(recipe)
             }
         }
+    }
+
+    fun setListener(listener: OnClickListener) {
+        this.listener = listener
     }
 
     @SuppressLint("NotifyDataSetChanged")

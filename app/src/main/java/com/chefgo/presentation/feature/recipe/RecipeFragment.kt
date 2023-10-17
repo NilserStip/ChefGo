@@ -6,26 +6,33 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
 import com.chefgo.R
-import com.chefgo.presentation.base.BaseFragment
 import com.chefgo.databinding.FragmentRecipeBinding
-import com.chefgo.presentation.feature.main.AppConstants
 import com.chefgo.domain.model.Recipe
-import com.chefgo.presentation.feature.recipe.viewmodel.RecipeContainer
+import com.chefgo.presentation.base.BaseFragment
+import com.chefgo.presentation.feature.main.AppConstants
 import com.chefgo.presentation.feature.recipe.viewmodel.RecipeViewModel
 import com.chefgo.presentation.feature.recipe.viewmodel.RecipeViewState
 import com.google.gson.Gson
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
+@AndroidEntryPoint
 class RecipeFragment : BaseFragment(), RecipeAdapter.OnClickListener {
 
     private var _binding: FragmentRecipeBinding? = null
     private lateinit var _viewModel: RecipeViewModel
-    private var _adapter = RecipeAdapter(this)
+
+    @set:Inject
+    var adapter: RecipeAdapter? = null
     private var _data = ArrayList<Recipe>()
+    var isReturned = false
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -39,20 +46,24 @@ class RecipeFragment : BaseFragment(), RecipeAdapter.OnClickListener {
         _binding = FragmentRecipeBinding.inflate(inflater, container, false)
 
         initParams()
-        initUI()
 
         return binding.root
     }
 
     private fun initParams() {
-        appContainer.recipeContainer = RecipeContainer(appContainer.getRecipesUseCase)
-
-        _viewModel = appContainer.recipeContainer!!.recipeViewModelFactory.create()
+        _viewModel = ViewModelProvider(this)[RecipeViewModel::class.java]
+        loadGridLayout()
         getRecipes
     }
 
-    private fun initUI() {
-        loadGridLayout(adapter = _adapter, recyclerView = binding.recyclerRecipes)
+    private fun loadGridLayout() {
+        adapter?.setListener(this)
+        binding.recyclerRecipes.apply {
+            setHasFixedSize(true)
+            layoutManager = GridLayoutManager(mContext, 3)
+        }
+        binding.recyclerRecipes.adapter = adapter
+        updateSateRecycler(binding.recyclerRecipes, view)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -77,6 +88,7 @@ class RecipeFragment : BaseFragment(), RecipeAdapter.OnClickListener {
 
         binding.apply {
             srlContent.setOnRefreshListener {
+                isReturned = false
                 getRecipes
                 binding.srlContent.isRefreshing = false
             }
@@ -86,14 +98,15 @@ class RecipeFragment : BaseFragment(), RecipeAdapter.OnClickListener {
 
             tilSearch.editText!!.addTextChangedListener {
                 if (it != null)
-                    _adapter.filter(it.toString(), _data)
+                    adapter?.filter(it.toString(), _data)
             }
         }
     }
 
     private val getRecipes: Unit
         get() {
-            _viewModel.getRecipes()
+            if (!isReturned)
+                _viewModel.getRecipes()
         }
 
     override fun onDestroyView() {
@@ -126,7 +139,7 @@ class RecipeFragment : BaseFragment(), RecipeAdapter.OnClickListener {
 
     private fun showList(data: List<Recipe>) {
         _data = ArrayList(data)
-        _adapter.setList(data)
+        adapter?.setList(data)
         updateSateRecycler(binding.recyclerRecipes, _data, binding.iListEmpty.root)
     }
 
@@ -136,12 +149,10 @@ class RecipeFragment : BaseFragment(), RecipeAdapter.OnClickListener {
         updateSateRecycler(binding.recyclerRecipes, constraints.root)
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        // Recipe flow is finishing
-        // Removing the instance of recipeContainer in the AppContainer
-        appContainer.recipeContainer = null
-        super.onDestroy()
+
+    override fun onStop() {
+        super.onStop()
+        isReturned = true
     }
 
 }

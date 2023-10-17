@@ -8,7 +8,9 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import com.chefgo.R
 import com.chefgo.presentation.base.BaseActivity
 import com.chefgo.databinding.ActivityMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : BaseActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration

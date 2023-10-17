@@ -4,19 +4,16 @@ import android.content.Context
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
-import com.chefgo.AppContainer
 
 open class BaseFragment : Fragment(), BaseView {
 
     var mContext: Context? = null
     var mActivity: BaseActivity? = null
-    lateinit var appContainer: AppContainer
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
         mContext = context
         mActivity = context as BaseActivity
-        appContainer = mActivity!!.appContainer
     }
 
     override fun onDetach() {

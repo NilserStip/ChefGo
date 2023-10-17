@@ -52,8 +52,11 @@ class DetailFragment : BaseFragment() {
         binding.apply {
             Glide.with(mContext!!).load(_data.logo.trim { it <= ' ' }).centerCrop()
                 .placeholder(R.drawable.loading).into(imageRecipe)
+            textViewPeople.text = _data.people.toString()
             textViewName.text = capitalize(_data.name)
             textviewDescription.text = capitalize(_data.description)
+            textviewIngredients.text = _data.ingredients
+            textviewPreparation.text = _data.preparation
 
             buttonMap.setOnClickListener {
                 actionMap()

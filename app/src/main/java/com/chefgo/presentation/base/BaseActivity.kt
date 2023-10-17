@@ -11,7 +11,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.chefgo.App
-import com.chefgo.AppContainer
 import com.chefgo.R
 import java.util.*
 
@@ -19,14 +18,12 @@ open class BaseActivity : AppCompatActivity(), BaseView {
 
     private var mContext: Context? = null
     private var mActivity: BaseActivity? = null
-    lateinit var appContainer: AppContainer
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initParams()
         mContext = this
         mActivity = this
-        appContainer = (application as App).appContainer
     }
 
     override fun onDestroy() {

@@ -4,12 +4,15 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.chefgo.domain.usecase.GetRecipesUseCase
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class RecipeViewModel constructor(private val getRecipesUseCase: GetRecipesUseCase) : ViewModel() {
+@HiltViewModel
+class RecipeViewModel @Inject constructor(private val getRecipesUseCase: GetRecipesUseCase) : ViewModel() {
 
     val viewState: LiveData<RecipeViewState> get() = _viewState
     val loading: LiveData<Boolean> get() = _loading

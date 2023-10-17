@@ -12,6 +12,9 @@
 
     <!-- Fragment Detail -->
     <string name="fragment_detail">Second Fragment</string>
+    <string name="fragment_detail_ingredients">Ingredientes</string>
+    <string name="fragment_detail_preparation">Preparación</string>
+    <string name="fragment_detail_people">4</string>
 
     <!-- Fragment Maps -->
     <string name="fragment_maps_marker">Origen de receta</string>
