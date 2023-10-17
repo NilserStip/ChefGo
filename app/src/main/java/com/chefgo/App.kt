@@ -1,6 +1,6 @@
 package com.chefgo
 
-import androidx.multidex.MultiDexApplication
+import android.app.Application
 import com.facebook.stetho.Stetho
 import com.google.firebase.FirebaseApp
 import com.google.firebase.analytics.FirebaseAnalytics
@@ -8,7 +8,7 @@ import com.google.firebase.crashlytics.FirebaseCrashlytics
 import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp
-class App : MultiDexApplication() {
+class App : Application() {
 
     // Instance of AppContainer that will be used by all the Activities of the app
 

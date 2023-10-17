@@ -1,7 +1,6 @@
 package com.chefgo.presentation.feature.recipe.viewmodel
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.chefgo.data.repository.RecipeRepositoryImp
 import com.chefgo.domain.model.Recipe
 import com.chefgo.domain.usecase.GetRecipesUseCase
 import kotlinx.coroutines.Dispatchers

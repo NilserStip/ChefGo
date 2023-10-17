@@ -1,17 +1,20 @@
 package com.chefgo.presentation.feature.recipe.detail
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
+import com.chefgo.App
 import com.chefgo.R
-import com.chefgo.presentation.base.BaseFragment
 import com.chefgo.databinding.FragmentDetailBinding
-import com.chefgo.presentation.feature.main.AppConstants
 import com.chefgo.domain.model.Recipe
+import com.chefgo.presentation.base.BaseFragment
+import com.chefgo.presentation.feature.main.AppConstants
+import com.google.firebase.analytics.FirebaseAnalytics
+import com.google.firebase.analytics.ktx.logEvent
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
@@ -35,6 +38,7 @@ class DetailFragment : BaseFragment() {
         _binding = FragmentDetailBinding.inflate(inflater, container, false)
 
         getParams()
+        logEventViewItem()
 
         return binding.root
     }
@@ -44,6 +48,13 @@ class DetailFragment : BaseFragment() {
             arguments?.getString(AppConstants.ARG_ITEM_RECIPE),
             object : TypeToken<Recipe>() {}.type
         )
+    }
+
+    private fun logEventViewItem() {
+        App.mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.VIEW_ITEM) {
+            param(FirebaseAnalytics.Param.ITEM_LIST_ID, _data.id)
+            param(FirebaseAnalytics.Param.ITEM_LIST_NAME, _data.name)
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

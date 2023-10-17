@@ -18,7 +18,7 @@ class RecipeAdapter @Inject constructor() :
     BaseAdapter<RecipeAdapter.ViewHolder>() {
 
     private lateinit var context: Context
-    private var listener: OnClickListener? = null
+    private var listener: OnActionsListener? = null
     private var data = ArrayList<Recipe>()
 
     class ViewHolder(val binding: ItemRecipeBinding) :
@@ -50,7 +50,7 @@ class RecipeAdapter @Inject constructor() :
         }
     }
 
-    fun setListener(listener: OnClickListener) {
+    fun setListener(listener: OnActionsListener) {
         this.listener = listener
     }
 
@@ -66,17 +66,21 @@ class RecipeAdapter @Inject constructor() :
 
         allRecipes.forEach {
             if (it.name.lowercase().contains(text.lowercase()) ||
-                it.description.contains(text.lowercase())
+                it.ingredients.contains(text.lowercase())
             )
                 optionsFilter.add(it)
         }
 
         data = ArrayList(optionsFilter)
         notifyDataSetChanged()
+
+        if (optionsFilter.isEmpty())
+            listener?.showEmptyFilterList()
     }
 
-    interface OnClickListener {
+    interface OnActionsListener {
         fun onClick(item: Recipe)
+        fun showEmptyFilterList()
     }
 
     override fun getItemCount() = data.size

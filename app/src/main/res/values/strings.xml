@@ -9,6 +9,8 @@
     <!-- Fragment Recipe -->
     <string name="fragment_recipe_search">Buscar Receta</string>
     <string name="fragment_recipe_map">Ver Mapa</string>
+    <string name="fragment_recipe_visible">Visible</string>
+    <string name="fragment_recipe_no_visible">No Visible</string>
 
     <!-- Fragment Detail -->
     <string name="fragment_detail">Second Fragment</string>
@@ -22,5 +24,6 @@
     <!-- View List Empty -->
     <string name="view_list_empty_title">Lista vacía</string>
     <string name="view_list_empty_description">Intente nuevamente deslizando la pantalla desde la parte superior hacia abajo</string>
+    <string name="view_list_empty_filter">No se encontró ninguna receta que coincida con el nombre o ingrediente ingresado</string>
 
 </resources>

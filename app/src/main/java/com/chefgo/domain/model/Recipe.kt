@@ -9,6 +9,7 @@ data class Recipe(
     val ingredients: String,
     val preparation: String,
     val people: Int,
+    val active: Boolean,
     val location: String
 
 )

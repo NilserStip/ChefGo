@@ -20,6 +20,7 @@ class RecipeMapper @Inject constructor() {
                     ingredients = it.ingredients,
                     preparation = it.preparation,
                     people = it.people,
+                    active = it.active,
                     location = it.location
                 )
             )
