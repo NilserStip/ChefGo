@@ -2,6 +2,7 @@ Nombre de la Aplicación Android
 # ChefGo
 
 // Contexto
+
 Aplicación Android de prueba para listar receta de comidas aplicando flavors, pruebas unitarias, corrutinas, firebase y buenas practicas de desarrollo.
 
 // Important Notes
